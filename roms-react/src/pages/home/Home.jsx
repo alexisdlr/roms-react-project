@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import React from "react";
+import { motion } from "framer-motion";
 import "./Home.scss";
+import GameList from "../../components/gamelist/GameList";
 function Home() {
-  const { currentUser } = useContext(AuthContext);
   return (
-    <div className="Home">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, type: "tween" }}
+      className="Home"
+    >
       <div className="hero">
         <h1>ENCUENTRA LOS MEJORES JUEGOS</h1>
         <div className="container-desc">
@@ -14,7 +19,11 @@ function Home() {
           </p>
         </div>
       </div>
-    </div>
+      <div>
+
+      </div>
+      <GameList />
+    </motion.div>
   );
 }
 

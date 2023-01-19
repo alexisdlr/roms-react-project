@@ -5,8 +5,9 @@ import axios from "axios";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+   const initialState = JSON.parse(localStorage.getItem("user"))
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
+    initialState || null
   );
 
 const logout = async () => {
@@ -22,7 +23,6 @@ const logout = async () => {
   const login = async (inputs) => {
     try {
       const res = await axios.post("http://localhost:8800/api/auth/login", inputs); 
-      console.log(res.data)
       setCurrentUser(res.data)
     } catch (error) {
       console.log(error);
@@ -31,6 +31,7 @@ const logout = async () => {
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));
+    console.log('desde authContext', currentUser)
   }, [currentUser]);
 
   return (

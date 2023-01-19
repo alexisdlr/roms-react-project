@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from '../../context/AuthContext';
 import defaultPic from '../../assets/userPicDefault.png'
+import {motion} from 'framer-motion'
 import './Navbar.scss'
 function Navbar() {
   const {currentUser, logout} = useContext(AuthContext)
@@ -18,7 +19,11 @@ function Navbar() {
     }
   }
   return (
-    <div className="Navbar">
+    <motion.div
+    initial={{ opacity: 0, y: -50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.3, type: "tween" }}
+    className="Navbar">
     <div className="left">
       <Link to={"/"} style={{ textDecoration: "none" }}>
         <span>FreeRoms</span>
@@ -44,7 +49,7 @@ function Navbar() {
       <div className="user">
         <img
           src={
-            currentUser.picture === undefined ? defaultPic : currentUser.picture
+            currentUser.picture === undefined || currentUser.picture === null? defaultPic : currentUser.picture
           }
           alt="user"
         />
@@ -54,7 +59,7 @@ function Navbar() {
         <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
-  </div>
+  </motion.div>
   )
 }
 

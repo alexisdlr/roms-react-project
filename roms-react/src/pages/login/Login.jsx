@@ -8,6 +8,8 @@ import axios from "axios";
 
 
 function Login() {
+  const navigate = useNavigate();
+  const [mss, setMss] = useState('')
   const { login, setCurrentUser } = useContext(AuthContext);
   const [err, setErr] = useState(null);
   const [inputs, setInputs] = useState({
@@ -37,13 +39,13 @@ const loginGoogle = useGoogleLogin({
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await login(inputs);
-      navigate("/");
+      setMss('Login exitoso')
+      navigate("/")
     } catch (error) {
       setErr(error.response.data);
     }
@@ -86,6 +88,7 @@ const loginGoogle = useGoogleLogin({
             <button onClick={() => loginGoogle()}>Sign in with Google</button>
             {err && err}
           </form>
+          {mss && <p>{mss}</p>}
         </div>
       </motion.div>
     </div>

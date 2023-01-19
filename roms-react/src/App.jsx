@@ -10,15 +10,18 @@ import { useContext, lazy, Suspense } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Loader from "./components/Loader/Loader";
 import Navbar from "./components/Navbar/Navbar";
+import Games from "./pages/games/Games";
+import SingleGame from "./pages/singlegame/SingleGame";
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Register = lazy(() => import("./pages/register/Register"));
-const Game = lazy(() => import("./pages/game/Game"));
+const Game = lazy(() => import("./components/game/Game"));
 
 
 function App() {
   const { currentUser } = useContext(AuthContext);
+
 
   const Layout = () => {
     return (
@@ -27,7 +30,8 @@ function App() {
       </div>
     );
   };
-  const ProtectedRoutes = ({ children }) => {
+  const ProtectedRoutes = ({ currentUser , children }) => {
+    console.log(!currentUser);
     if (!currentUser) {
       return <Navigate to="/login" />;
     }
@@ -38,7 +42,7 @@ function App() {
     {
       path: "/",
       element: (
-        <ProtectedRoutes>
+        <ProtectedRoutes currentUser={currentUser}>
           <Navbar />
           <Layout />
         </ProtectedRoutes>
@@ -53,11 +57,10 @@ function App() {
           ),
         },
         {
-          path: "/game/:name",
+          path: "/juegos/:name",
           element: (
             <Suspense fallback={<Loader />} >
-
-              <Game />
+              <SingleGame />
             </Suspense>
           ),
         },
