@@ -10,7 +10,7 @@ import { useContext, lazy, Suspense } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Loader from "./components/Loader/Loader";
 import Navbar from "./components/Navbar/Navbar";
-import SingleGame from "./pages/singlegame/SingleGame";
+import SingleConsoleGame from "./pages/singleconsolegame/SingleConsoleGames";
 import ConsolesPage from "./pages/consoles/ConsolesPage";
 
 const Home = lazy(() => import("./pages/home/Home"));
@@ -57,10 +57,10 @@ function App() {
           ),
         },
         {
-          path: "/juegos/:name",
+          path: "/juegos/:id",
           element: (
             <Suspense fallback={<Loader />} >
-              <SingleGame />
+              <SingleConsoleGame />
             </Suspense>
           ),
         },

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Console.scss";
 function Console({ console }) {
   return (
-    <Link to={'/juegos/'+ console.name} replace={true} style={{textDecoration: 'none', color:'inherit'}}>
+    <Link to={'/juegos/'+ console.id} replace={true} style={{textDecoration: 'none', color:'inherit'}}>
       <div className="console">
         <img src={console.img} alt={console.name} />
         <h2>{console.name}</h2>

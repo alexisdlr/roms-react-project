@@ -1,73 +1,72 @@
-  
 .Navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  height: 50px;
+  background-color: transparent;
+  color: #fff;
+  z-index: 100;
+  .left {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 2rem 3rem;
-    height: 50px;
-    position: sticky;
-    top: 0;
-    background-color: transparent;
-    color: #fff;
-    z-index: 100;
-    .left {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      span {
-        font-weight: bold;
-        font-size: 20px;
-        color: #fff;
-      }
-
+    gap: 30px;
+    span {
+      font-weight: bold;
+      font-size: 20px;
+      color: #fff;
     }
-    .right {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
 
-      .navigation {
-        ul {
-          display: flex;
-          gap: 1rem;
-          li{
-            list-style: none;
-            span {
-              font-weight: bold;
-              transition: all 300ms ease-in-out;
-              &:hover {
-                color: #2940D3;
-              }
+    .navigation {
+      ul {
+        display: flex;
+        gap: 1rem;
+        li {
+          list-style: none;
+          span {
+            font-weight: bold;
+            transition: all 300ms ease-in-out;
+            &:hover {
+              color: #2940d3;
             }
           }
         }
       }
-      .user {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 500;
-        img {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          object-fit: cover;
-        }
+    }
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
       }
-  
-       button {
-        background-color: #2940D3;
-        border: 0;
-        padding: .4rem 1rem;
-        border-radius: 5px;
-        color: #fff;
-        cursor: pointer;
-        transition: all 300ms ease-in-out;
-        font-weight: bold;
-        &:hover {
-          background-color: transparent;
-          color: #2940D3;
-        }
-        }
+    }
+
+    button {
+      background-color: #2940d3;
+      border: 0;
+      padding: 0.4rem 1rem;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 300ms ease-in-out;
+      font-weight: bold;
+      &:hover {
+        background-color: transparent;
+        color: #2940d3;
+      }
     }
   }
+}
