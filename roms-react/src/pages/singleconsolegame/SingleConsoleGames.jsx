@@ -20,7 +20,7 @@ function SingleConsoleGames() {
 
       <div className="singleConsoleGames">
         {games.map((game, index) => (
-          <Game key={index} game={game} />
+          <Game key={index} index={index} game={game} />
         ))}
       </div>
     </motion.div>

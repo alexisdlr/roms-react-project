@@ -16,7 +16,7 @@ function ConsolesPage() {
       </div>
       <div className="consolesList">
         {consoles
-          ? consoles.map((console) => <Console console={console} />)
+          ? consoles.map((console, index) => <Console index={index} console={console} />)
           : ""}
       </div>
     </motion.div>

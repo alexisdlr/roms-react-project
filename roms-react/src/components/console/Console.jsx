@@ -1,13 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./Console.scss";
-function Console({ console }) {
+function Console({ console, index }) {
+
+  const variants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: ({delay}) => ({
+      opacity: 1,
+      transition: {
+        delay,
+        duration: .3
+      }
+    })
+  }
   return (
     <Link to={'/juegos/'+ console.id} replace={true} style={{textDecoration: 'none', color:'inherit'}}>
-      <div className="console">
+      <motion.div 
+      initial={'hidden'}
+      animate={'visible'}
+      custom={{delay: (index + .1) * 0.2}}
+      variants={variants}
+      className="console">
         <img src={console.img} alt={console.name} />
         <h2>{console.name}</h2>
-      </div>
+      </motion.div>
     </Link>
   );
 }

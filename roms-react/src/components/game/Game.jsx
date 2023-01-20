@@ -1,9 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./Game.scss";
-function Game({ game }) {
+function Game({ game, index }) {
+  const variants = {
+    hidden: {
+      opacity: 0
+    },
+    visible: ({delay}) => ({
+      opacity: 1,
+      transition: {
+        delay,
+        duration: .3
+      }
+    })
+  }
   return (
-      <div className="game">
+      <motion.div
+      initial={'hidden'}
+      animate={'visible'}
+      custom={{delay: (index + .1) * 0.2}}
+      variants={variants}
+      className="game">
         <div className="cont-img">
           <img
             src={game.img}
@@ -14,7 +31,7 @@ function Game({ game }) {
           <h2>{game.name}</h2>
           <a href={game.link} target={'_blank'}>Download</a>
         </div>
-      </div>
+      </motion.div>
   );
 }
 
