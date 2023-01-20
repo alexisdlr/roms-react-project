@@ -12,9 +12,9 @@ export const AuthContextProvider = ({ children }) => {
 
 const logout = async () => {
   try {
+    setCurrentUser(null)
     const res = await axios.post("http://localhost:8800/api/auth/logout"); 
     console.log(res)
-    setCurrentUser(null)
   } catch (error) {
     console.log(error);
   }
