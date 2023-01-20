@@ -4,14 +4,14 @@ export const useGames = () => {
   const [games, setGames] = useState([])
   const url = 'http://localhost:8800/api/games'
 
-  const getCountries = () => {
+  const getGames = () => {
     fetch(url)
     .then(res => res.json())
     .then(data => setGames(data))
   }
 
   useEffect(() => {
-    getCountries()
+    getGames()
   }, [])
 
   return {games}

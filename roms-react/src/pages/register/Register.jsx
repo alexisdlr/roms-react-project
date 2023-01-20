@@ -4,22 +4,24 @@ import "./Register.scss";
 
 import axios from "axios";
 import { motion } from "framer-motion";
+import { ButtonCaptcha } from "../../components/captcha/Captcha";
 function Register() {
+  const [captchaDone, setCaptchaDone] = useState(false);
   const navigate = useNavigate();
   const [err, setErr] = useState(null);
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
     password: "",
-    name: ""
-  })
+    name: "",
+  });
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(Object.entries(inputs).values)
+    console.log(Object.entries(inputs).values);
     try {
       await axios.post("http://localhost:8800/api/auth/register", inputs);
       setErr("Registrado Correctamente");
@@ -81,7 +83,8 @@ function Register() {
             />
            
             <button onClick={handleClick}>Register</button>
-            {err && <p style={{ color: "red" }}>{err}</p>}
+            <ButtonCaptcha />
+            {err && <p >{err}</p>}
           </form>
         </div>
       </motion.div>

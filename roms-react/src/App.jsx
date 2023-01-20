@@ -10,13 +10,13 @@ import { useContext, lazy, Suspense } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Loader from "./components/Loader/Loader";
 import Navbar from "./components/Navbar/Navbar";
-import Games from "./pages/games/Games";
 import SingleGame from "./pages/singlegame/SingleGame";
+import ConsolesPage from "./pages/consoles/ConsolesPage";
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Register = lazy(() => import("./pages/register/Register"));
-const Game = lazy(() => import("./components/game/Game"));
+const Games = lazy(() => import("./pages/games/Games"));
 
 
 function App() {
@@ -64,6 +64,22 @@ function App() {
             </Suspense>
           ),
         },
+        {
+          path: "/consolas",
+          element: (
+            <Suspense fallback={<Loader />} >
+              <ConsolesPage />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/juegos",
+          element: (
+            <Suspense fallback={<Loader />} >
+              <Games />
+            </Suspense>
+          ),
+        }
       ],
     },
     {
