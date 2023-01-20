@@ -1,3 +1,4 @@
 import app from './app.js'
+import { PORT } from './config.js'
 
-app.listen(8800, () => console.log('working'))
+app.listen(PORT, () => console.log(`listening at port ${PORT}`))

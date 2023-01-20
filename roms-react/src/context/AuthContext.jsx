@@ -31,7 +31,6 @@ const logout = async () => {
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));
-    console.log('desde authContext', currentUser)
   }, [currentUser]);
 
   return (

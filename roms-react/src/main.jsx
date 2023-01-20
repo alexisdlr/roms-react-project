@@ -8,7 +8,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
       <GoogleReCaptchaProvider
-      reCaptchaKey="6LfXCA8kAAAAAOmiDrthaBjmJbirO50XPmPBGdLQ"
+      reCaptchaKey="6Lc6bBMkAAAAAJs4uf1VTrni023IjESBvZiSE7JA"
       >
         <GoogleOAuthProvider clientId="154543081467-tib6t09d59q8db0ddmca2f06lgnv58fq.apps.googleusercontent.com">
           <App />

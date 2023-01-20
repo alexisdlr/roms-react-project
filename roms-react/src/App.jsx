@@ -22,7 +22,7 @@ const Games = lazy(() => import("./pages/games/Games"));
 function App() {
   const { currentUser } = useContext(AuthContext);
 
-
+  
   const Layout = () => {
     return (
       <div className={'Layout'}>
@@ -31,7 +31,6 @@ function App() {
     );
   };
   const ProtectedRoutes = ({ currentUser , children }) => {
-    console.log(!currentUser);
     if (!currentUser) {
       return <Navigate to="/login" />;
     }
