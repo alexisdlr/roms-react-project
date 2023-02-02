@@ -1,4 +1,3 @@
-import React from "react";
 import "./Loader.scss";
 import { Ring } from "@uiball/loaders";
 

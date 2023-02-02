@@ -1,7 +1,7 @@
-import React from "react";
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import "./Home.scss";
-import GameList from "../../components/gamelist/GameList";
+const GameList = lazy(() => import("../../components/gamelist/GameList"));
 function Home() {
   return (
     <motion.div
@@ -10,7 +10,6 @@ function Home() {
       transition={{ duration: 0.3, type: "tween" }}
       className="Home"
     >
-       
       <div className="hero">
         <h1>ENCUENTRA LOS MEJORES JUEGOS</h1>
         <div className="container-desc">
@@ -20,10 +19,10 @@ function Home() {
           </p>
         </div>
       </div>
-      <div></div>
 
-     
-      <GameList />
+      <Suspense fallback={<div>...</div>}>
+        <GameList />
+      </Suspense>
 
       <div className="what-is">
         <h2>¿QUÉ SON LOS JUEGOS DE ROMS GRATIS?</h2>

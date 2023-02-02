@@ -1,0 +1,16 @@
+.Alerta {
+  p {
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 1rem;
+    text-transform: uppercase;
+  }
+  .alerta-error {
+    background-color: red;
+  }
+  .alerta {
+    background-color: #2940d3;
+  }
+}

@@ -1,8 +1,14 @@
 import { pool } from "../connect.js";
 import bcrypt from "bcryptjs";
-import jwt from 'jsonwebtoken'
+import { validationResult } from "express-validator";
+import generateJWT from "../helpers/generateJWT.js";
 export const register = async (req, res) => {
     //check if user exists
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
     const select = "SELECT * FROM users where username = ?";
     const [rows] = await pool.query(select, [req.body.username]);
     if (rows.length) return res.status(409).json("User Already exists");
@@ -27,20 +33,27 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   const q = 'SELECT * FROM users WHERE username = ?'
-  const [rows] = await pool.query(q, [req.body.username])
-  if(rows.length === 0) return res.status(404).send('user not found')
-  console.log(rows)
-  
-  const checkPass = bcrypt.compareSync(req.body.password, rows[0].password)
-  if (!checkPass) return res.status(400).json('wrong password')
+  const [user] = await pool.query(q, [req.body.username])
+  if(user.length === 0) return res.status(404).send('usuario no encontrado')
 
-  const {passWord, ...others} = rows[0]
-  const token = jwt.sign({id: rows[0].id}, "secretkey")
-  res.cookie("accessToken", token, {
-    httpOnly: true
-  }).status(200).json(others)
+  const checkPass = bcrypt.compareSync(req.body.password, user[0].password)
+  if (!checkPass) return res.status(400).json('password incorrecta')
+
+  res.json({
+    id: user[0].id,
+    name: user[0].name,
+    username: user[0].username,
+    email: user[0].email,
+    token: generateJWT(user[0].id, user[0].email)})
+
 };
 
+export const profile = async (req, res) => {
+  const {user} = req
+  console.log('user',user);
+  res.json(user)
+
+}
 export const logout = (req, res) => {
   res.clearCookie('accessToken', {
     secure: true,

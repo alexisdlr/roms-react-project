@@ -1,14 +1,11 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./Register.scss";
-
-import axios from "axios";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ButtonCaptcha } from "../../components/captcha/Captcha";
+import Alert from "../../components/Alerta/Alert";
+import clientAxios from "../../axios/clientAxios";
+import "./Register.scss";
 function Register() {
-  const [captchaDone, setCaptchaDone] = useState(false);
-  const navigate = useNavigate();
-  const [err, setErr] = useState(null);
+  const [err, setErr] = useState({});
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
@@ -21,15 +18,38 @@ function Register() {
   };
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(Object.entries(inputs).values);
+    const {username, email, password, name} = inputs
+
     try {
-      await axios.post("http://localhost:8800/api/auth/register", inputs);
-      setErr("Registrado Correctamente");
-      setTimeout(() => {
-        navigate("/login");
-      }, 3000);
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if([username, email, password, name].includes('')) {
+        setErr({
+          msg: 'Ningun campo debe estar vacio',
+          error: true
+        })
+        return
+      }
+      if (!re.test(inputs.email)) {
+        setErr({
+          msg: 'Introduce un email válido',
+          error: true
+        })
+        return
+      }
+      if(password.length<6) {
+        setErr({
+          msg: 'Utiliza un password de al menos 6 carácteres',
+          error: true
+        })
+        return
+      }
+      await clientAxios.post("/auth/register", {username, email, password, name});
+      setErr({
+        msg: "Registrado Correctamente",
+        error: false
+      });
+
     } catch (error) {
-      console.log(error.response.data);
       setErr(error.response.data);
     }
   };
@@ -84,8 +104,7 @@ function Register() {
             />
            
             <button onClick={handleClick}>Register</button>
-            <ButtonCaptcha />
-            {err && <p >{err}</p>}
+            {err.msg && <Alert err={err} />}
           </form>
         </div>
       </motion.div>

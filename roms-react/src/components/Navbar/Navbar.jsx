@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from '../../context/AuthContext';
 import defaultPic from '../../assets/userPicDefault.png'
 import {motion} from 'framer-motion'
 import './Navbar.scss'
+import useAuth from '../../hooks/useAuth';
 function Navbar() {
-  const {currentUser, logout} = useContext(AuthContext)
+  const {auth, logout} = useAuth()
   const navigate = useNavigate()
 
   const handleLogout = async (e) => {
@@ -49,11 +48,11 @@ function Navbar() {
       <div className="user">
         <img
           src={
-            currentUser.picture === undefined || currentUser.picture === null? defaultPic : currentUser.picture
+            auth.picture === undefined || auth.picture === null? defaultPic : auth.picture
           }
           alt="user"
         />
-        <span>{currentUser.name}</span>
+        <span>{auth.name}</span>
       </div>
       <div>
         <button onClick={handleLogout}>Logout</button>

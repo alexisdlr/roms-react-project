@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import "./Game.scss";
 function Game({ game, index }) {
@@ -18,7 +17,7 @@ function Game({ game, index }) {
       <motion.div
       initial={'hidden'}
       animate={'visible'}
-      custom={{delay: (index + .1) * 0.2}}
+      custom={{delay: (index + 1) * 0.1}}
       variants={variants}
       className="game">
         <div className="cont-img">

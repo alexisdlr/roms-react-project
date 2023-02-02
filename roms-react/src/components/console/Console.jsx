@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Console.scss";
@@ -21,7 +20,7 @@ function Console({ console, index }) {
       <motion.div 
       initial={'hidden'}
       animate={'visible'}
-      custom={{delay: (index + .1) * 0.2}}
+      custom={{delay: (index + 1) * 0.1}}
       variants={variants}
       className="console">
         <img src={console.img} alt={console.name} />
