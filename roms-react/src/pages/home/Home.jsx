@@ -1,28 +1,29 @@
-import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import GameList from "../../components/gamelist/GameList";
 import "./Home.scss";
-const GameList = lazy(() => import("../../components/gamelist/GameList"));
+
 function Home() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, type: "tween" }}
-      className="Home"
-    >
-      <div className="hero">
-        <h1>ENCUENTRA LOS MEJORES JUEGOS</h1>
-        <div className="container-desc">
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, type: "tween" }}
+        className="Home"
+      >
+        <div className="hero">
+          <h1>GameLoadX</h1>
           <p>
             Cientos de títulos en videojuegos y opciones para todos los gustos,
             sumérgete en el mundo gamer y forma parte de la experiencia.
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      <Suspense fallback={<div>...</div>}>
+      <div className='gamelist-container'>
+        <h2>Juegos que podrian interesarte: </h2>
         <GameList />
-      </Suspense>
+      </div>
 
       <div className="what-is">
         <h2>¿QUÉ SON LOS JUEGOS DE ROMS GRATIS?</h2>
@@ -44,7 +45,7 @@ function Home() {
           una lista de los mejores juegos Rom para PC y consolas.
         </p>
       </div>
-    </motion.div>
+    </>
   );
 }
 

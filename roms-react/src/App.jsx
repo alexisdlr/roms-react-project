@@ -13,49 +13,67 @@ const Games = lazy(() => import("./pages/games/Games"));
 import "./style.scss";
 import ProtectedRoutes from "./layouts/ProtectedRoutes";
 import { AuthContextProvider } from "./context/AuthContext";
+import { ConsolesProvider } from "./context/ConsolesContext";
 
 function App() {
-
   return (
     <BrowserRouter>
       <AuthContextProvider>
-        <Routes>
-          <Route path="/" element={<ProtectedRoutes />} >
-            <Route index element={
-               <Suspense fallback={<Loader />}>
-               <Home />
-             </Suspense>
-            } />
-
-          <Route path="juegos/:id" element={
-              <Suspense fallback={<Loader />}>
-              <SingleConsoleGame />
-            </Suspense>
-          }
-          />
-           <Route path="consolas" element={
-              <Suspense fallback={<Loader />}>
-              <ConsolesPage />
-            </Suspense>
-          }
-          />
-          <Route path="juegos" element={
-               <Suspense fallback={<Loader />}>
-               <Games />
-             </Suspense>
-          } />
-          </Route>
-          <Route path="/login" element={
-             <Suspense fallback={<Loader />}>
-             <Login />
-           </Suspense>
-          }  />
-          <Route path="register" element={
+        <ConsolesProvider>
+          <Routes>
+            <Route path="/" element={<ProtectedRoutes />}>
+              <Route
+                index
+                element={
                   <Suspense fallback={<Loader />}>
+                    <Home />
+                  </Suspense>
+                }
+              />
+
+              <Route
+                path="juegos/:id"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <SingleConsoleGame />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="consolas"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <ConsolesPage />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="juegos"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Games />
+                  </Suspense>
+                }
+              />
+            </Route>
+            <Route
+              path="/login"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <Login />
+                </Suspense>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <Suspense fallback={<Loader />}>
                   <Register />
                 </Suspense>
-          } />
-        </Routes>
+              }
+            />
+          </Routes>
+        </ConsolesProvider>
       </AuthContextProvider>
     </BrowserRouter>
   );

@@ -1,18 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext } from "react"
+import { ConsolesContext } from "../context/ConsolesContext"
 
-export const useConsoles = () => {
-  const [consoles, setConsoles] = useState([])
-  const url = 'http://localhost:8800/api/consoles'
-
-  const getConsoles = () => {
-    fetch(url)
-    .then(res => res.json())
-    .then(data => setConsoles(data))
-  }
-
-  useEffect(() => {
-    getConsoles()
-  }, [])
-
-  return {consoles}
+const useConsoles = () => {
+  return useContext(ConsolesContext)
 }
+
+export default useConsoles

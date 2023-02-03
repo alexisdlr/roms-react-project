@@ -72,14 +72,14 @@ function Login() {
         className="card"
       >
         <div className="left">
-          <h1>FREE ROMS</h1>
-          <span>Don't you have an account?</span>
+          <h1>Game {''}Load X</h1>
+          <span>Aún no tienes una cuenta?</span>
           <Link to={"/register"}>
-            <button>Register</button>
+            <button>Regístrate</button>
           </Link>
         </div>
         <div className="right">
-          <h2>Login</h2>
+          <h2>Inicia Sesión</h2>
           <form>
             <input
               type="text"
@@ -95,9 +95,9 @@ function Login() {
               placeholder="Password"
               onChange={handleChange}
             />
-            <button onClick={handleLogin}>Login</button>
-            or
-            <button onClick={() => loginGoogle()}>Sign in with Google</button>
+            <button onClick={handleLogin}>Iniciar sesión</button>
+            o
+            <button onClick={() => loginGoogle()}>Iniciar con Google</button>
             {msg && <Alert err={err} />}
           </form>
         </div>

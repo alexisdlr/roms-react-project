@@ -64,15 +64,15 @@ function Register() {
         className="card"
       >
         <div className="left">
-          <h1>FREE ROMS</h1>
+          <h1>Game {''}Load X</h1>
 
-          <span>Do you have an account?</span>
+          <span>Ya tienes una cuenta?</span>
           <Link to="/login">
-            <button>Login</button>
+            <button>Inicia Sesión</button>
           </Link>
         </div>
         <div className="right">
-          <h2>Register</h2>
+          <h2>Registrarse</h2>
           <form>
             <input
               type="text"
@@ -103,7 +103,7 @@ function Register() {
               onChange={handleChange}
             />
            
-            <button onClick={handleClick}>Register</button>
+            <button onClick={handleClick}>Crear cuenta</button>
             {err.msg && <Alert err={err} />}
           </form>
         </div>

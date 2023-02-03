@@ -16,9 +16,10 @@ function Game({ game, index }) {
   return (
       <motion.div
       initial={'hidden'}
-      animate={'visible'}
+      whileInView={'visible'}
       custom={{delay: (index + 1) * 0.1}}
       variants={variants}
+      viewport={{once: true}}
       className="game">
         <div className="cont-img">
           <img

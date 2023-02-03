@@ -8,7 +8,7 @@ function GameList() {
     <>
       <div className="gamelist">
         {games
-          ? games.map((game, index) => <Game game={game} index={index} key={game.id} />)
+          ? games.slice(0,10).map((game, index) => <Game game={game} index={index} key={game.id} />)
           : "not found"}
       </div>
       <div className="view-all">
