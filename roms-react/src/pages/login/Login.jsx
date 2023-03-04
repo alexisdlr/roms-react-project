@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useGoogleLogin } from "@react-oauth/google";
-import "./Login.scss";
 import Alert from "../../components/Alerta/Alert";
 import clientAxios from "../../axios/clientAxios";
 import useAuth from "../../hooks/useAuth";
+import {FcGoogle} from 'react-icons/fc'
+import "./Login.scss";
+
 
 function Login() {
   const navigate = useNavigate();
@@ -96,8 +98,8 @@ function Login() {
               onChange={handleChange}
             />
             <button onClick={handleLogin}>Iniciar sesión</button>
-            o
-            <button onClick={() => loginGoogle()}>Iniciar con Google</button>
+            <span>O</span>
+            <button className="g-button" onClick={() => loginGoogle()}>Iniciar con Google  <FcGoogle /> </button>
             {msg && <Alert err={err} />}
           </form>
         </div>

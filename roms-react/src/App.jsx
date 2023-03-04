@@ -9,6 +9,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Register = lazy(() => import("./pages/register/Register"));
 const Games = lazy(() => import("./pages/games/Games"));
+const Admin = lazy(() => import('./pages/admin/Admin'));
 
 import "./style.scss";
 import ProtectedRoutes from "./layouts/ProtectedRoutes";
@@ -30,7 +31,14 @@ function App() {
                   </Suspense>
                 }
               />
-
+              <Route
+                path="admin"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Admin />
+                  </Suspense>
+                }
+              />
               <Route
                 path="juegos/:id"
                 element={

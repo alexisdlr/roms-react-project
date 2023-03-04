@@ -1,10 +1,18 @@
-import { config } from "dotenv"; 
+import mongoose from "mongoose";
 
-config()
+const connectDB = async () => {
+  try {
+    mongoose.set('strictQuery', false)
+    const db = await mongoose.connect(process.env.MONGO_URI,{
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    })
+    const url = `${db.connection.host}:${db.connection.port}`
+    console.log('mongo db conected on:' , url)
+  } catch (error) {
+    console.log(`error: ${error}`)
+    process.exit(1)
+  }
+}
 
-export const PORT = process.env.PORT || 8800
-export const HOST = process.env.HOST || 'localhost'
-export const USER = process.env.USER || 'root'
-export const PASS = process.env.PASSWORD || '1111'
-export const DB_PORT = process.env.DB_PORT || 3308
-export const DATABASE = process.env.DATABASE || 'integradora'
+export default connectDB
