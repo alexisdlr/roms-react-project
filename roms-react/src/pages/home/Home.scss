@@ -18,7 +18,13 @@
       font-weight: bolder;
       color: var(--white-color);
       font-size: 5rem;
+      border-radius: 20px;
+      padding: .4rem 1rem;
       text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
     }
     //293462
       p {
@@ -61,3 +67,4 @@
     font-size: 3rem;
   }
 }
+

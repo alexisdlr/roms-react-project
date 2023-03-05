@@ -1,9 +1,16 @@
+@import "../../mixins.scss";
+
 .login {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  @include mobile {
+    flex-direction: column;
+    padding: 2rem 0;
+    height: auto;
+  }
   .card {
     width: 60%;
     min-height: 500px;
@@ -12,7 +19,11 @@
     border-radius: 10px;
 
     overflow: hidden;
-
+    
+    @include mobile {
+      width: 85%;
+      flex-direction: column;
+    }
     .left {
       flex: 1;
       background-image: url('../../assets/card-bg.png');
@@ -21,14 +32,26 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
+
+      @include mobile {
+        align-items: center;
+      }
       h1{
         font-size: 80px;
         color: var(--white-color);
         line-height: 100px;
+        @include mobile {
+          font-size: 50px;
+          text-align: center;
+          line-height: 1.5;
+        }
       }
     
       span{
         font-size: 10px;
+        @include mobile {
+          font-size: 12px;
+        }
       }
       button{
         width: 50%;
@@ -43,6 +66,9 @@
         &:hover {
           background-color: var(--text-primary-color);
           color: var(--white-color);
+        }
+        @include mobile {
+          width: 100%;
         }
       }
     }
@@ -91,6 +117,9 @@
             background-color: transparent;
             color: var(--text-primary-color);
           }
+          @include mobile {
+            width: 100%;
+          }
 
         }
         .g-button {
@@ -103,6 +132,9 @@
           &:hover {
             background-color: #000;
             color: #fff;
+          }
+          @include mobile {
+            width: 100%;
           }
         }
         span {

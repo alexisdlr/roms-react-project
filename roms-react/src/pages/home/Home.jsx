@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { BiGame } from "react-icons/bi";
 import GameList from "../../components/gamelist/GameList";
 import "./Home.scss";
 
@@ -12,7 +13,14 @@ function Home() {
         className="Home"
       >
         <div className="hero">
-          <h1>GameLoadX</h1>
+          <motion.h1
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            GameLoad
+            <BiGame />
+          </motion.h1>
           <p>
             Cientos de títulos en videojuegos y opciones para todos los gustos,
             sumérgete en el mundo gamer y forma parte de la experiencia.
@@ -20,7 +28,7 @@ function Home() {
         </div>
       </motion.div>
 
-      <div className='gamelist-container'>
+      <div className="gamelist-container">
         <h2>Juegos que podrian interesarte: </h2>
         <GameList />
       </div>
