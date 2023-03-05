@@ -6,13 +6,13 @@ import { useGoogleLogin } from "@react-oauth/google";
 import Alert from "../../components/Alerta/Alert";
 import clientAxios from "../../axios/clientAxios";
 import useAuth from "../../hooks/useAuth";
-import {FcGoogle} from 'react-icons/fc'
+import { FcGoogle } from "react-icons/fc";
+import { BiLogIn } from "react-icons/bi";
 import "./Login.scss";
-
 
 function Login() {
   const navigate = useNavigate();
-  const { setAuth } = useAuth()
+  const { setAuth } = useAuth();
   const [err, setErr] = useState({});
   const [inputs, setInputs] = useState({
     username: "",
@@ -37,33 +37,32 @@ function Login() {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if([inputs.password, inputs.username].includes('')){
+    if ([inputs.password, inputs.username].includes("")) {
       setErr({
-        msg:'Ningun campo puede estar vacio.',
-        error: true
-      })
+        msg: "Ningun campo puede estar vacio.",
+        error: true,
+      });
       setTimeout(() => {
-        setErr({})
-      }, 2200)
-      return
+        setErr({});
+      }, 3000);
+      return;
     }
     try {
       const { data } = await clientAxios.post("auth/login", inputs);
-      localStorage.setItem('tokenRoms', data.token)
-      setAuth(data)
+      localStorage.setItem("tokenRoms", data.token);
+      setAuth(data);
       navigate("/");
     } catch (error) {
       setErr({
         msg: error.response.data,
-        error: true
+        error: true,
       });
     }
   };
-  const {msg} = err
+  const { msg } = err;
   return (
     <div className="login">
       <motion.div
@@ -74,14 +73,17 @@ function Login() {
         className="card"
       >
         <div className="left">
-          <h1>Game {''}Load X</h1>
+          <h1>Game {""}Load X</h1>
           <span>Aún no tienes una cuenta?</span>
           <Link to={"/register"}>
             <button>Regístrate</button>
           </Link>
         </div>
         <div className="right">
-          <h2>Inicia Sesión</h2>
+          {msg && <Alert err={err} />}
+          <h2>
+            Inicia Sesión <BiLogIn />{" "}
+          </h2>
           <form>
             <input
               type="text"
@@ -99,8 +101,9 @@ function Login() {
             />
             <button onClick={handleLogin}>Iniciar sesión</button>
             <span>O</span>
-            <button className="g-button" onClick={() => loginGoogle()}>Iniciar con Google  <FcGoogle /> </button>
-            {msg && <Alert err={err} />}
+            <button className="g-button" onClick={() => loginGoogle()}>
+              Iniciar con Google <FcGoogle />{" "}
+            </button>
           </form>
         </div>
       </motion.div>

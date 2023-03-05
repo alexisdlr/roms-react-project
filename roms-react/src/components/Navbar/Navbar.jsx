@@ -29,12 +29,12 @@ function Navbar() {
         <div className="navigation">
           <nav>
             <ul>
-              {["Juegos", "Consolas", "Acerca de"].map((item, index) => (
+              {["Juegos", "Consolas", "Acerca de", "Perfil"].map((item, index) => (
                 <li key={index}>
                   <Link
                     to={item.toLowerCase()}
                     style={{ textDecoration: "none", color: "inherit" }}
-                  >
+                    >
                     <span>{item}</span>
                   </Link>
                 </li>

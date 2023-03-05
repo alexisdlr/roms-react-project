@@ -11,10 +11,10 @@ const Register = lazy(() => import("./pages/register/Register"));
 const Games = lazy(() => import("./pages/games/Games"));
 const Admin = lazy(() => import('./pages/admin/Admin'));
 
-import "./style.scss";
 import ProtectedRoutes from "./layouts/ProtectedRoutes";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ConsolesProvider } from "./context/ConsolesContext";
+import "./style.scss";
 
 function App() {
   return (

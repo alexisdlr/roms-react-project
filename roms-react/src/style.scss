@@ -2,17 +2,23 @@
   box-sizing: border-box;
   margin: 0;
 }
+:root {
+  --text-primary-color: #5800FF;
+  --text-secondary-color: #181D31;
+  --bg-primary-color: #000114;
+  --white-color: #fff;
+}
 body {
   font-family: 'Open Sans', sans-serif;
   color: #fff;
-  background-color: #000114;
+  background-color: var(--bg-primary-color);
   min-height: 100vh;
 
   &::-webkit-scrollbar{
     background-color: #111;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #2940D3;
+    background-color: var(--text-primary-color);
   }
 
 }

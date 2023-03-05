@@ -23,13 +23,10 @@
       gap: 30px;
       h1{
         font-size: 80px;
-        color: #2940D3;
-
+        color: var(--white-color);
         line-height: 100px;
       }
-      p{
-
-      }
+    
       span{
         font-size: 10px;
       }
@@ -37,14 +34,15 @@
         width: 50%;
         padding: 10px;
         border: none;
-        background-color: #fff;
-        color: #2940D3;
+        background-color: var(--white-color);
+        color: var(--text-secondary-color);
         font-weight: bold;
         cursor: pointer;
-        transition: all 300ms ease-in-out ;
+        transition: all 300ms ease-in-out;
+        border-radius: 5px;
         &:hover {
-          background-color: #2940D3;
-          color: #fff;
+          background-color: var(--text-primary-color);
+          color: var(--white-color);
         }
       }
     }
@@ -57,7 +55,10 @@
       justify-content: center;
 
       h2{
-        color: #fff;
+        color: var(--text-primary-color);
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
       form{
         display: flex;
@@ -69,38 +70,38 @@
           border: none;
           background-color: transparent;
           border-bottom: 1px solid #fff;
-          color: #fff;
+          color: var(--white-color);
           transition: all 300ms ease-in-out;
           &:focus-visible {
             outline: 0;
-            border-bottom: 1px #2940D3 solid;
+            border-bottom: 1px var(--text-primary-color) solid;
           }
         }
         button {
           width: 50%;
           padding: 10px;
           border: none;
-          background-color: #2940D3;
-          color: #fff;
+          background-color: var(--text-primary-color);
+          color: var(--white-color);
           font-weight: bold;
           cursor: pointer;
           transition: all 300ms ease-in-out;
           border-radius: 5px;
           &:hover {
             background-color: transparent;
-            color: #2940D3;
+            color: var(--text-primary-color);
           }
 
         }
         .g-button {
-          background-color: #fff;
+          background-color: var(--white-color);
           color: #111;
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 5px;
           &:hover {
-            background-color: transparent;
+            background-color: #000;
             color: #fff;
           }
         }

@@ -31,6 +31,10 @@ const userSchema = mongoose.Schema({
     type: String, 
     default: null
   },
+  role: {
+    type: String, 
+    default: "user"
+  },
   token: {
     type: String,
     default: generateToken()
