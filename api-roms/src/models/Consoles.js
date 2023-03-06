@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const ConsolesSchema = mongoose.Schema({
-  nombre:{
+  name:{
     type: String,
     required: true,
     trim: true
@@ -12,6 +12,6 @@ const ConsolesSchema = mongoose.Schema({
 
 })
 
-const Console = mongoose.model('Veterinario', ConsolesSchema)
+const Console = mongoose.model('Console', ConsolesSchema)
 
 export default Console

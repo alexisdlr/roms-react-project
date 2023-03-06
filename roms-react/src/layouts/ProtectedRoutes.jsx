@@ -11,7 +11,7 @@ function ProtectedRoutes() {
   return (
     <>
       <Navbar />
-      {auth?.id || auth?.sub ? <Outlet /> : <Navigate to="/login" /> }
+      {auth?._id || auth?.sub ? <Outlet /> : <Navigate to="/login" /> }
     </>
   );
 }

@@ -1,11 +1,27 @@
-import { pool } from "../connect.js"
-
+import Game from '../models/Games.js'
 export const getGames = async (req,res) => {
   try {
-    const consoleId = req.query.consoleId
-    const q = consoleId ? 'SELECT * FROM games where consoleId = ?' :'' 
-    const [rows] = consoleId ? await pool.query(q, [consoleId]) : await pool.query(q);
-    return res.status(200).json(rows)
+    const {consoleId} = req.query
+    if (consoleId) {
+      const games = await Game.find()
+      .where("console")
+      .equals(consoleId);
+      return res.status(200).json(games)
+    }
+    const games = await Game.find()
+    return res.status(200).json(games)
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+export const addGames = async (req,res) => {
+  try {
+    const {consoleId} = req.body
+    const newGame = new Game(req.body)
+    newGame.console = consoleId
+    const gameSaved = await newGame.save()
+    return res.status(200).json(gameSaved)
 
   } catch (error) {
     console.log(error);

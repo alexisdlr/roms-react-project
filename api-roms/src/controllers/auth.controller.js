@@ -1,5 +1,5 @@
-import bcrypt from "bcryptjs";
 import { validationResult } from "express-validator";
+import emailRegistro from '../helpers/emailRegistro.js'
 import generateJWT from "../helpers/generateJWT.js";
 import User from "../models/User.js";
 export const register = async (req, res) => {
@@ -7,17 +7,18 @@ export const register = async (req, res) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json(errors.array());
   }
 
   try {
     const { email } = req.body;
-    const userExist = await User.find({ email });
+    const userExist = await User.findOne({ email });
     if (userExist) return res.status(409).json("Este usuario ya existe");
 
     //register on bd
     const user = new User(req.body);
     const userSaved = await user.save();
+    emailRegistro({ email, name: userSaved.name, token: userSaved.token });
     return res.json(userSaved);
   } catch (error) {
     return res.status(400).json(error);
@@ -26,18 +27,18 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.find({ email });
-  if (!user)
-    return res.status(404).json({
-      msg: "usuario no encontrado",
-    });
 
+  const user = await User.findOne({ email });
+  if (!user) return res.status(500).json("Usuario no existe" );
+
+  if (!user.isConfirmed)
+    return res.status(500).json("Usuario no confirmado");
   if (await !user.comparePass(password))
-    return res.status(500).json({ msg: "Las contraseñas no coinciden" });
+    return res.status(500).json("Las contraseñas no coinciden");
 
   res.json({
     _id: user.id,
-    name: user.nombre,
+    name: user.name,
     email: user.email,
     token: generateJWT(user.id, user.email),
   });

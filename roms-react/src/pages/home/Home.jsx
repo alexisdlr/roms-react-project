@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { BiGame } from "react-icons/bi";
 import GameList from "../../components/gamelist/GameList";
+import Slide from "../../components/slide/Slide";
 import "./Home.scss";
 
 function Home() {
@@ -30,11 +31,11 @@ function Home() {
 
       <div className="gamelist-container">
         <h2>Juegos que podrian interesarte: </h2>
-        <GameList />
+        
       </div>
 
       <div className="what-is">
-        <h2>¿QUÉ SON LOS JUEGOS DE ROMS GRATIS?</h2>
+        <h2>¿Qué son los Free ROMS?</h2>
         <p>
           Si eres fanático de los videojuegos, sabrás que los juegos Free Roms
           son un género popular. Los juegos Rom son un tipo de videojuego que

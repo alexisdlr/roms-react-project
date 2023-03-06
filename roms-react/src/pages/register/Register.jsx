@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Alert from "../../components/Alerta/Alert";
+import Alert from "../../components/alert/Alert";
 import clientAxios from "../../axios/clientAxios";
 import { HiUserAdd } from "react-icons/hi";
 import "./Register.scss";
@@ -22,8 +22,7 @@ function Register() {
     const { username, email, password, name } = inputs;
 
     try {
-      const re =
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      
       if ([username, email, password, name].includes("")) {
         setErr({
           msg: "Ningun campo debe estar vacio",
@@ -34,26 +33,8 @@ function Register() {
         }, 3000);
         return;
       }
-      if (!re.test(inputs.email)) {
-        setErr({
-          msg: "Introduce un email válido",
-          error: true,
-        });
-        setTimeout(() => {
-          setErr({});
-        }, 3000);
-        return;
-      }
-      if (password.length < 6) {
-        setErr({
-          msg: "Utiliza un password de al menos 6 carácteres",
-          error: true,
-        });
-        setTimeout(() => {
-          setErr({});
-        }, 3000);
-        return;
-      }
+   
+    
       await clientAxios.post("/auth/register", {
         username,
         email,
@@ -61,11 +42,20 @@ function Register() {
         name,
       });
       setErr({
-        msg: "Registrado Correctamente",
+        msg: "Creado correctamente, revisa tu email!",
         error: false,
       });
+      setTimeout(() => {
+        setErr({})
+      }, 2500)
     } catch (error) {
-      setErr(error.response.data);
+      setErr({
+        msg: error.response.data[0].msg || error.response.data,
+        error: true
+      });
+      setTimeout(() => {
+        setErr({})
+      }, 2500)
     }
   };
 

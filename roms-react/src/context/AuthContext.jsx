@@ -4,48 +4,47 @@ import clientAxios from "../axios/clientAxios";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-    const [auth, setAuth] = useState({});
-    const [cargando, setCargando] = useState(true)
+  const [auth, setAuth] = useState({});
+  const [cargando, setCargando] = useState(true);
 
-useEffect(() => {
-  const authUser = async () => {
-    const token = localStorage.getItem('tokenRoms');
- 
-    if(!token) {
-      setCargando(false)
-      return
-    }
+  useEffect(() => {
+    const authUser = async () => {
+      const token = localStorage.getItem("tokenRoms");
 
-    const config = {
-      headers: {
-        "Content-Type": 'application/json',
-        Authorization: `Bearer ${token}`
+      if (!token) {
+        setCargando(false);
+        return;
       }
-    }
-    try {
-      const {data} = await clientAxios('/auth/profile', config)
-      setAuth(data);
-    } catch (error) {
-      console.log(error.response.data.msg)
-      setAuth({})
-    }
 
-    setCargando(false)
-  }
-  authUser()
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      try {
+        const { data } = await clientAxios("/auth/profile", config);
+        setAuth(data);
+      } catch (error) {
+        setAuth({});
+      }
+
+      setCargando(false);
+    };
+    authUser();
   }, []);
 
   const logout = async () => {
     try {
-      localStorage.removeItem('tokenRoms')
-      setAuth({})
+      localStorage.removeItem("tokenRoms");
+      setAuth({});
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth, logout, cargando}}>
+    <AuthContext.Provider value={{ auth, setAuth, logout, cargando }}>
       {children}
     </AuthContext.Provider>
   );

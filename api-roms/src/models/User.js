@@ -22,15 +22,6 @@ const userSchema = mongoose.Schema({
     unique: true,
     trim: true
   },
-  tel: {
-    type: String, 
-    default: null,
-    trim: true
-  },
-  web: {
-    type: String, 
-    default: null
-  },
   role: {
     type: String, 
     default: "user"

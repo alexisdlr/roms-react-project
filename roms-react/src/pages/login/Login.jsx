@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useGoogleLogin } from "@react-oauth/google";
-import Alert from "../../components/Alerta/Alert";
+import Alert from "../../components/alert/Alert";
 import clientAxios from "../../axios/clientAxios";
 import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
@@ -15,7 +15,7 @@ function Login() {
   const { setAuth } = useAuth();
   const [err, setErr] = useState({});
   const [inputs, setInputs] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -40,7 +40,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if ([inputs.password, inputs.username].includes("")) {
+    if ([inputs.password, inputs.email].includes("")) {
       setErr({
         msg: "Ningun campo puede estar vacio.",
         error: true,
@@ -86,10 +86,10 @@ function Login() {
           </h2>
           <form>
             <input
-              type="text"
+              type="email"
               required
-              name="username"
-              placeholder="Username"
+              name="email"
+              placeholder="Email"
               onChange={handleChange}
             />
             <input
@@ -105,6 +105,10 @@ function Login() {
               Iniciar con Google <FcGoogle />{" "}
             </button>
           </form>
+          <p>
+            Olvidaste tu contraseña?{" "}
+            <Link className="Link" to={"/olvide-password"}>Recuperar Contraseña</Link>
+          </p>
         </div>
       </motion.div>
     </div>

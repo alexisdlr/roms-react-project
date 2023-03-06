@@ -10,7 +10,7 @@
   justify-content: center;
 
   span {
-    background-color: #2050C9;
+    background-color: var(--text-primary-color);
     border-radius: 5px;
     padding: .4rem 1rem;
     transition: all 300ms ease-in-out;
