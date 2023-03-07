@@ -29,7 +29,7 @@ function Game({ game, index }) {
         </div>
         <div className="title">
           <h2>{game.name}</h2>
-          <a href={game.link} target={'_blank'}>Download</a>
+          <a href={game.link} target={'_blank'}>Descargar Ahora</a>
         </div>
       </motion.div>
   );

@@ -19,11 +19,35 @@ const emailRegistro = async (datos) => {
     subject: 'Confirma tu cuenta en GameLoad',
     text: 'Confirma tu cuenta en GameLoad',
     html: `
-      <div style='font-family: sans-serif;'> 
-      <h2 style='color: #5800FF;'>Hola, ${name}! confirma el registro de tu cuenta en GameLoad</h2>
-      <p>Tu cuenta está lista, solo debes confirmarla mediante el siguiente enlace: 
-      <a href='${process.env.FRONTEND_URL}/confirmar/${token}'>Confirmar cuenta</a> </p>
-      <p style='font-weight: bold;'> Si tu no creaste esta cuenta puedes ignorar este correo</p>  
+      <div 
+        style='background-color: #000114;
+        font-family: sans-serif; 
+        display: flex; 
+        flex-direction:column; 
+        justify-content: center; 
+        align-items: center; '
+       > 
+        <img 
+          style='object-fit: cover; 
+          width:100%; 
+          height: 250px;' 
+          src='https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' 
+          alt='img' 
+          /> 
+        <div style='padding-top: 2rem;'>
+          <h1 
+            style='color: #5800FF; 
+            font-size: 50px; 
+            text-align: center;'
+            >
+            Bienvenido GameLoader!
+          </h1>
+          <h2 style='color: #eee; font-size: 22px; text-align: center;'>Hola, ${name}! confirma el registro de tu cuenta en GameLoad</h2>
+          <p style='color: #d9d9d9; font-size: 16px; text-align: center;'>Tu cuenta está lista, solo debes confirmarla mediante el siguiente enlace: 
+          <a href='${process.env.FRONTEND_URL}/confirmar/${token}' style='color: #fff;'>Confirmar cuenta</a> </p>
+          <p style='font-weight: bold;'> Si tu no creaste esta cuenta puedes ignorar este correo</p>  
+        </div>
+        <span style='font-size: 14px; color: grey; padding-bottom: 1rem;' > -Atte: Gameload </span>
       </div>
     `
   })

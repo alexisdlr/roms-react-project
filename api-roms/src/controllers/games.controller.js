@@ -1,7 +1,7 @@
 import Game from '../models/Games.js'
 export const getGames = async (req,res) => {
   try {
-    const {consoleId} = req.query
+    const {consoleId} = req.params
     if (consoleId) {
       const games = await Game.find()
       .where("console")

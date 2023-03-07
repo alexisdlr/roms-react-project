@@ -1,7 +1,7 @@
 @import "../../mixins.scss";
 
 .Home {
-  background: url("https://themebeyond.com/html/geco/img/bg/bg.jpg") no-repeat
+  background: url("../../assets/bg.jpg") no-repeat
     center center/cover;
   height: 100vh;
   padding: 5rem 3rem;
@@ -19,6 +19,7 @@
     h1 {
       font-weight: bolder;
       color: var(--white-color);
+    
       font-size: 5rem;
       border-radius: 20px;
       padding: .4rem 1rem;

@@ -16,7 +16,7 @@ function Console({ console, index }) {
   };
   return (
     <Link
-      to={"/juegos/" + console.id}
+      to={"/juegos/" + console._id}
       replace={true}
       style={{ textDecoration: "none", color: "inherit" }}
     >

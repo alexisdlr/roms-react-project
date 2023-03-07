@@ -10,6 +10,8 @@ const Login = lazy(() => import("./pages/login/Login"));
 const Register = lazy(() => import("./pages/register/Register"));
 const Games = lazy(() => import("./pages/games/Games"));
 const Admin = lazy(() => import('./pages/admin/Admin'));
+const ConfirmAccount = lazy(() => import("./pages/confirmAccount/ConfirmAccount"))
+const Profile = lazy(() => import("./pages/profile/Profile"))
 
 import ProtectedRoutes from "./layouts/ProtectedRoutes";
 import { AuthContextProvider } from "./context/AuthContext";
@@ -36,6 +38,14 @@ function App() {
                 element={
                   <Suspense fallback={<Loader />}>
                     <Admin />
+                  </Suspense>
+                }
+              />
+               <Route
+                path="perfil"
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Profile />
                   </Suspense>
                 }
               />
@@ -72,6 +82,13 @@ function App() {
                 </Suspense>
               }
             />
+            <Route 
+                path="confirmar/:token" 
+                element={
+                <Suspense fallback={<Loader />} >
+                  <ConfirmAccount />
+                </Suspense>}
+               />
             <Route
               path="register"
               element={

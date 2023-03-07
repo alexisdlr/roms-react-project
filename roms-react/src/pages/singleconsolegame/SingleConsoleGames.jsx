@@ -12,16 +12,7 @@ function SingleConsoleGames() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className={`${
-        consoleId == 1
-          ? "ps2"
-          : consoleId == 2
-          ? "xbox"
-          : consoleId == 3
-          ? "psp"
-          : consoleId == 4
-          ? "sega" : ''
-      } container-all`}
+      className={'container-all'}
     >
       <div>
         <h1>Juegos</h1>

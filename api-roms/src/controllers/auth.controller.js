@@ -49,6 +49,21 @@ export const profile = async (req, res) => {
   console.log("user", user);
   res.json(user);
 };
+export const confirmAccount = async (req, res) => {
+  const { token } = req.params;
+
+  const userConfirm = await User.findOne({ token });
+  if (!userConfirm)
+    return res.status(404).json( "Token no válido");
+  try {
+    userConfirm.token = null;
+    userConfirm.isConfirmed = true;
+    await userConfirm.save();
+    res.json("cuenta confirmada exitosamente");
+  } catch (error) {
+    return res.status(500).json("Hubo un error");
+  }
+}
 export const logout = (req, res) => {
   res
     .clearCookie("accessToken", {

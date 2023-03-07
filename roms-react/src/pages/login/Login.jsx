@@ -87,7 +87,6 @@ function Login() {
           <form>
             <input
               type="email"
-              required
               name="email"
               placeholder="Email"
               onChange={handleChange}
@@ -105,10 +104,10 @@ function Login() {
               Iniciar con Google <FcGoogle />{" "}
             </button>
           </form>
-          <p>
+          <span>
             Olvidaste tu contraseña?{" "}
             <Link className="Link" to={"/olvide-password"}>Recuperar Contraseña</Link>
-          </p>
+          </span>
         </div>
       </motion.div>
     </div>

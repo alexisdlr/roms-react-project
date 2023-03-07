@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { BiGame } from "react-icons/bi";
 import GameList from "../../components/gamelist/GameList";
-import Slide from "../../components/slide/Slide";
 import "./Home.scss";
 
 function Home() {

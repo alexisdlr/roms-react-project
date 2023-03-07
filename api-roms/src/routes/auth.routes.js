@@ -5,6 +5,7 @@ import {
   register,
   logout,
   profile,
+  confirmAccount,
 } from "../controllers/auth.controller.js";
 import checkAuth from "../middlewares/auth.middleware.js";
 
@@ -31,7 +32,7 @@ router.post(
   register
 );
 router.post("/logout", logout);
-
+router.get("/confirm/:token", confirmAccount)
 //private route
 router.get("/profile", checkAuth, profile);
 
