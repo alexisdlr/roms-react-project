@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import defaultPic from "../../assets/userPicDefault.png";
 import useAuth from "../../hooks/useAuth";
@@ -65,30 +66,32 @@ function Navbar() {
         </div>
         <div className="menu">
           <HiMenuAlt4 onClick={handleClick} />
-
-          {toggle && (
-            <motion.div
-              whileInView={{ x: [300, 0] }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <HiX onClick={handleClick} />
-              <ul>
-                {["Juegos", "Consolas", "Acerca de", "Perfil"].map(
-                  (item, i) => (
-                    <li key={i}>
-                      <Link className="link" to={`${item}`}>
-                        {item}
-                      </Link>
-                    </li>
-                  )
-                )}
-              <span className="logout-menu">
-                <button onClick={handleLogout}>Cerrar Sesión</button>
-              </span>
-              </ul>
-
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {toggle && (
+              <motion.div
+                initial={{ x: 300 }}
+                animate={{x: 0}}
+                transition={{ duration: 0.3, ease: "easeIn" }}
+                exit={{ x: 300 }}
+              >
+                <HiX onClick={handleClick} />
+                <ul>
+                  {["Juegos", "Consolas", "Acerca de", "Perfil"].map(
+                    (item, i) => (
+                      <li key={i} onClick={handleClick}>
+                        <Link className="link" to={`${item}`}>
+                          {item}
+                        </Link>
+                      </li>
+                    )
+                  )}
+                  <span className="logout-menu">
+                    <button onClick={handleLogout}>Cerrar Sesión</button>
+                  </span>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="logout">
