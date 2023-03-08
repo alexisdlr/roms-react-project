@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Alert from "../../components/alert/Alert";
 import clientAxios from "../../axios/clientAxios";
 import { HiUserAdd } from "react-icons/hi";
@@ -22,7 +22,6 @@ function Register() {
     const { username, email, password, name } = inputs;
 
     try {
-      
       if ([username, email, password, name].includes("")) {
         setErr({
           msg: "Ningun campo debe estar vacio",
@@ -33,8 +32,7 @@ function Register() {
         }, 3000);
         return;
       }
-   
-    
+
       await clientAxios.post("/auth/register", {
         username,
         email,
@@ -46,16 +44,16 @@ function Register() {
         error: false,
       });
       setTimeout(() => {
-        setErr({})
-      }, 2500)
+        setErr({});
+      }, 2500);
     } catch (error) {
       setErr({
         msg: error.response.data[0].msg || error.response.data,
-        error: true
+        error: true,
       });
       setTimeout(() => {
-        setErr({})
-      }, 2500)
+        setErr({});
+      }, 2500);
     }
   };
 
@@ -77,11 +75,11 @@ function Register() {
           </Link>
         </div>
         <div className="right">
-          {err.msg && <Alert err={err} />}
-          <h2>
+          <AnimatePresence>{err.msg && <Alert err={err} />}</AnimatePresence>
+          <motion.h2 layout>
             Crear nueva cuenta <HiUserAdd />
-          </h2>
-          <form autoComplete="off">
+          </motion.h2>
+          <motion.form layout>
             <input
               type="text"
               required
@@ -112,7 +110,7 @@ function Register() {
             />
 
             <button onClick={handleClick}>Crear cuenta</button>
-          </form>
+          </motion.form>
         </div>
       </motion.div>
     </div>

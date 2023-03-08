@@ -8,12 +8,13 @@
   --bg-primary-color: #000114;
   --white-color: #fff;
 }
+
 body {
   font-family: 'Open Sans', sans-serif;
   color: #fff;
   background-color: var(--bg-primary-color);
   min-height: 100vh;
-
+  overflow-x: hidden;
   &::-webkit-scrollbar{
     background-color: #111;
   }

@@ -9,7 +9,6 @@ const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/login/Login"));
 const Register = lazy(() => import("./pages/register/Register"));
 const Games = lazy(() => import("./pages/games/Games"));
-const Admin = lazy(() => import('./pages/admin/Admin'));
 const ConfirmAccount = lazy(() => import("./pages/confirmAccount/ConfirmAccount"))
 const Profile = lazy(() => import("./pages/profile/Profile"))
 
@@ -30,14 +29,6 @@ function App() {
                 element={
                   <Suspense fallback={<Loader />}>
                     <Home />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="admin"
-                element={
-                  <Suspense fallback={<Loader />}>
-                    <Admin />
                   </Suspense>
                 }
               />
@@ -97,6 +88,7 @@ function App() {
                 </Suspense>
               }
             />
+          
           </Routes>
         </ConsolesProvider>
       </AuthContextProvider>

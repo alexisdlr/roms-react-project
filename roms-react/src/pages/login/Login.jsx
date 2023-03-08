@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useGoogleLogin } from "@react-oauth/google";
 import Alert from "../../components/alert/Alert";
 import clientAxios from "../../axios/clientAxios";
@@ -80,11 +80,16 @@ function Login() {
           </Link>
         </div>
         <div className="right">
-          {msg && <Alert err={err} />}
-          <h2>
+          <AnimatePresence>{msg && <Alert err={err} />}</AnimatePresence>
+          <motion.h2 layout>
             Inicia Sesión <BiLogIn />{" "}
-          </h2>
-          <form>
+          </motion.h2>
+          <motion.form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+            layout
+          >
             <input
               type="email"
               name="email"
@@ -93,7 +98,6 @@ function Login() {
             />
             <input
               type="password"
-              required
               name="password"
               placeholder="Password"
               onChange={handleChange}
@@ -103,10 +107,13 @@ function Login() {
             <button className="g-button" onClick={() => loginGoogle()}>
               Iniciar con Google <FcGoogle />{" "}
             </button>
-          </form>
+          </motion.form>
+
           <span>
             Olvidaste tu contraseña?{" "}
-            <Link className="Link" to={"/olvide-password"}>Recuperar Contraseña</Link>
+            <Link className="Link" to={"/olvide-password"}>
+              Recuperar Contraseña
+            </Link>
           </span>
         </div>
       </motion.div>

@@ -1,6 +1,6 @@
 import "./UpdateProfile.scss";
 const UpdateProfile = () => {
-
+  
   return (
     <div className="update-profile">
       <h2>Edita tu perfil</h2>

@@ -62,7 +62,14 @@ function Navbar() {
             }
             alt="user"
           />
-          <span>{auth.name}</span>
+          <span>
+            <Link
+              to={"perfil"}
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              {auth.name}
+            </Link>
+          </span>
         </div>
         <div className="menu">
           <HiMenuAlt4 onClick={handleClick} />
@@ -70,7 +77,7 @@ function Navbar() {
             {toggle && (
               <motion.div
                 initial={{ x: 300 }}
-                animate={{x: 0}}
+                animate={{ x: 0 }}
                 transition={{ duration: 0.3, ease: "easeIn" }}
                 exit={{ x: 300 }}
               >

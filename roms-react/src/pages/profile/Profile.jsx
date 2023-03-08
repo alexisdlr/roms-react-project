@@ -7,8 +7,13 @@ import "./Profile.scss";
 import UpdateProfile from "../../components/updateProfile/UpdateProfile";
 function Perfil() {
   const { auth } = useAuth();
+  console.log(auth.sub !== null)
   return (
-    <motion.div className="profile">
+    <motion.div
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    transition={{duration: 0.3 ,ease: 'easeIn'}}
+    className="profile">
       <div className="images">
         <img
           src={
@@ -55,7 +60,11 @@ function Perfil() {
     
         </div>
       </div>
-      <UpdateProfile/>
+      {
+        auth.sub !== null && (
+            <UpdateProfile/>
+        )
+      }
     </motion.div>
   );
 }

@@ -47,7 +47,7 @@ const emailRegistro = async (datos) => {
           <a href='${process.env.FRONTEND_URL}/confirmar/${token}' style='color: #fff;'>Confirmar cuenta</a> </p>
           <p style='font-weight: bold;'> Si tu no creaste esta cuenta puedes ignorar este correo</p>  
         </div>
-        <span style='font-size: 14px; color: grey; padding-bottom: 1rem;' > -Atte: Gameload </span>
+        <span style='font-size: 14px; color: grey; padding-bottom: 2rem;' > -Atte: Gameload </span>
       </div>
     `
   })
