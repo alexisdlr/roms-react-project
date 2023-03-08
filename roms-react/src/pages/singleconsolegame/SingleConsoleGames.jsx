@@ -9,9 +9,8 @@ function SingleConsoleGames() {
   const { games } = useGames(consoleId);
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, type: "tween" }}
+      animate={{ opacity: [0, 1] }}
+      transition={{ duration: 0.3 }}
       className={'container-all'}
     >
       <div>

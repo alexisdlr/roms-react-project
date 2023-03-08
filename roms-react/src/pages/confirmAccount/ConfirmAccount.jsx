@@ -46,9 +46,7 @@ function ConfirmAccount() {
         </h1>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0 }}
+        animate={{ opacity: [0, 1], scale: [0.8, 1] }}
         className="confirm-nav"
       >
         <div>

@@ -8,9 +8,8 @@ function ConsolesPage() {
   
   return (
     <motion.div 
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.3, type: "tween" }}
+    animate={{ opacity: [0, 1] }}
+    transition={{ duration: 0.3, ease: "easeInOut" }}
     className="consolepage">
       <div>
         <h1>Consolas mas populares</h1>

@@ -7,20 +7,16 @@ function Home() {
   return (
     <>
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, type: "tween" }}
+        animate={{ opacity: [0, 1] }}
+        transition={{ duration: 0.3, ease: 'easeInOut'}}
         className="Home"
       >
         <div className="hero">
-          <motion.h1
-            initial={{ x: -100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.3 }}
+          <h1
           >
             GameLoad
             <BiGame />
-          </motion.h1>
+          </h1>
           <p>
             Cientos de títulos en videojuegos y opciones para todos los gustos,
             sumérgete en el mundo gamer y forma parte de la experiencia.

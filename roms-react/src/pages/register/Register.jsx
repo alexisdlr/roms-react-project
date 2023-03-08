@@ -60,8 +60,7 @@ function Register() {
   return (
     <div className="register">
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
+        animate={{ opacity: [0, 1], scale: [0.8, 1] }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3, type: "tween" }}
         className="card"

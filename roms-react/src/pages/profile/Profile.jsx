@@ -10,8 +10,7 @@ function Perfil() {
   console.log(auth.sub !== null)
   return (
     <motion.div
-    initial={{opacity: 0}}
-    animate={{opacity: 1}}
+    animate={{opacity: [0, 1]}}
     transition={{duration: 0.3 ,ease: 'easeIn'}}
     className="profile">
       <div className="images">

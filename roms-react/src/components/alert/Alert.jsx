@@ -4,8 +4,7 @@ function Alert({err}) {
   return (
     <div className='Alerta' >
         <motion.p
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
+        animate={{opacity: [0,1]}}
         exit={{opacity: 0}}
         
         className={`${err.error ? 'alerta-error' :'alerta'}`}>{err.msg}</motion.p>
