@@ -8,7 +8,6 @@ function Home() {
     <>
       <motion.div
         animate={{ opacity: [0, 1] }}
-        transition={{ duration: 0.3, ease: 'easeInOut'}}
         className="Home"
       >
         <div className="hero">

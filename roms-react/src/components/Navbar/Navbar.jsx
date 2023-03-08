@@ -24,9 +24,8 @@ function Navbar() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, type: "tween" }}
+      animate={{ opacity: [0, 1], y: [-50, 0] }}
+      transition={{ duration: 0.3 }}
       className="Navbar"
     >
       <div className="left">
@@ -76,9 +75,8 @@ function Navbar() {
           <AnimatePresence>
             {toggle && (
               <motion.div
-                initial={{ x: 300 }}
-                animate={{ x: 0 }}
-                transition={{ duration: 0.3, ease: "easeIn" }}
+                animate={{ x: [300, 0] }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
                 exit={{ x: 300 }}
               >
                 <HiX onClick={handleClick} />
