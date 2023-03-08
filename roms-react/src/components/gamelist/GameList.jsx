@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useGames } from "../../hooks/useGames";
+import  useGames  from "../../hooks/useGames";
 import Game from "../game/Game";
 import "./GameList.scss";
 function GameList() {

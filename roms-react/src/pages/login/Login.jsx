@@ -60,6 +60,9 @@ function Login() {
         msg: error.response.data,
         error: true,
       });
+      setTimeout(() => {
+        setErr({});
+      }, 3000);
     }
   };
   const { msg } = err;
@@ -67,7 +70,6 @@ function Login() {
     <div className="login">
       <motion.div
         animate={{ opacity: [0,1], scale: [0.8, 1]}}
-        exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         className="card"
       >

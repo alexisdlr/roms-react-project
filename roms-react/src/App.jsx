@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import AnimatedRoutes from "./components/AnimatedRoutes";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ConsolesProvider } from "./context/ConsolesContext";
+import { GamesProvider } from "./context/GamesContext";
 import "./style.scss";
 
 function App() {
@@ -9,7 +10,9 @@ function App() {
     <BrowserRouter>
       <AuthContextProvider>
         <ConsolesProvider>
-         <AnimatedRoutes />
+          <GamesProvider>
+            <AnimatedRoutes />
+          </GamesProvider>
         </ConsolesProvider>
       </AuthContextProvider>
     </BrowserRouter>

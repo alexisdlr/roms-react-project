@@ -61,8 +61,6 @@ function Register() {
     <div className="register">
       <motion.div
         animate={{ opacity: [0, 1], scale: [0.8, 1] }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3, type: "tween" }}
         className="card"
       >
         <div className="left">

@@ -11,7 +11,6 @@ function Perfil() {
   return (
     <motion.div
     animate={{opacity: [0, 1]}}
-    transition={{duration: 0.3 ,ease: 'easeIn'}}
     className="profile">
       <div className="images">
         <img

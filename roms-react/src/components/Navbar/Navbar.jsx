@@ -24,7 +24,7 @@ function Navbar() {
 
   return (
     <motion.div
-      animate={{ opacity: [0, 1], y: [-50, 0] }}
+      animate={{ y: [-50, 0] }}
       transition={{ duration: 0.3 }}
       className="Navbar"
     >
