@@ -75,7 +75,7 @@ function Navbar() {
           <AnimatePresence>
             {toggle && (
               <motion.div
-                animate={{ x: [300, 0] }}
+                animate={{ x: [500, 0] }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 exit={{ x: 300 }}
               >

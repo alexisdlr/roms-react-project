@@ -15,7 +15,7 @@
     padding: .4rem 1rem;
     transition: all 300ms ease-in-out;
     &:hover {
-      color: #2050C9;
+      color: var(--text-primary-color);
       background-color: transparent;
     }
   }

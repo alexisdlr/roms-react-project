@@ -32,10 +32,6 @@
         padding: 10px;
       }
 
-      @include tablet{
-        padding: 20px;
-      }
-
       .uInfo {
         height: 180px;
         -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
@@ -57,12 +53,13 @@
           margin-top: 100px;
         }
 
+
         .left {
           flex: 1;
           display: flex;
           gap: 5px;
 
-          @include tablet{
+          @include mobile{
             flex-wrap: wrap;
           }
 
@@ -87,6 +84,7 @@
             @include mobile {
               align-self: center;
             }
+         
           }
 
           .info {
@@ -97,6 +95,7 @@
             @include mobile {
               gap: 10px;
             }
+           
             .item {
               display: flex;
               align-items: center;
