@@ -12,6 +12,7 @@ export const getGames = async (req,res) => {
 export const addGames = async (req,res) => {
   try {
     const {consoleId} = req.body
+    if (!consoleId) return res.status(400).json('Falta el ID de la consola')
     const newGame = new Game(req.body)
     newGame.console = consoleId
     const gameSaved = await newGame.save()
