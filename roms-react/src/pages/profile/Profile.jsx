@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import useAuth from "../../hooks/useAuth";
 import defaultPic from "../../assets/userPicDefault.png";
 import {
@@ -10,18 +10,20 @@ import {
 } from "react-icons/ai";
 import { MdPlace } from "react-icons/md";
 import "./Profile.scss";
-import UpdateProfile from "../../components/updateProfile/UpdateProfile";
+import notfound from "../../assets/notfound.png";
 import useGames from "../../hooks/useGames";
 function Perfil() {
   const { auth } = useAuth();
-  const { favoritos, handleQuitarFavorito} = useGames();
+  const { favoritos, handleQuitarFavorito } = useGames();
 
   const handleClick = (game) => {
-    handleQuitarFavorito(game)
-  }
+    handleQuitarFavorito(game);
+  };
 
   return (
-    <motion.div animate={{ opacity: [0, 1] }} className="profile">
+    <motion.div
+    
+    animate={{ opacity: [0, 1] }} className="profile">
       <div className="images">
         <img
           src={
@@ -70,22 +72,36 @@ function Perfil() {
           </div>
         </div>
       </div>
-      {
-        favoritos.length > 0 ? <div className="container-all">
-        <h2>Juegos que te gustaron</h2>
-        <div className="container-gamesLiked">
-          {favoritos.map((game) => (
-            <div key={game._id} className="gameLiked">
-              <img src={game.img} />
-              <h3>{game.name}</h3>
-              <span onClick={() => handleClick(game)} className='dislike'>
-                Ya no me gusta <AiFillHeart />
-              </span>
-            </div>
-          ))}
+      {favoritos.length > 0 ? (
+        <div className="container-all">
+          <h2>Juegos que te gustaron</h2>
+          <div className="container-gamesLiked">
+            <AnimatePresence>
+              {favoritos.map((game) => (
+                <motion.div
+                  animate={{ opacity: [0, 1] }}
+                  exit={{ opacity: 0 }}
+                  key={game._id}
+                  className="gameLiked"
+                >
+                  <img src={game.img} />
+                  <h3>{game.name}</h3>
+                  <span onClick={() => handleClick(game)} className="dislike">
+                    Ya no me gusta <AiFillHeart />
+                  </span>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
-      </div> : <h2 style={{textAlign: 'center'}}>Añade juegos a tu seccion de Me gusta</h2>
-      }
+      ) : (
+        <motion.div
+        animate={{opacity: [0,1]}}
+        className="notFound">
+          <h2>Aun no hay juegos en tus "Me gusta"</h2>
+          <img src={notfound} alt="notfound" />
+        </motion.div>
+      )}
     </motion.div>
   );
 }

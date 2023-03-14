@@ -22,8 +22,8 @@ function Home() {
 
       <div className="gamelist-container">
         <h2>Juegos que podrian interesarte: </h2>
-        <GameList />
-      </div>
+        <GameList slice />
+      </div> 
 
       <div className="what-is">
         <div>
