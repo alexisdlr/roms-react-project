@@ -37,7 +37,7 @@ function Navbar() {
         <div className="navigation">
           <nav>
             <ul>
-              {["Juegos", "Consolas", "Acerca de", "Perfil"].map(
+              {["Juegos", "Consolas", "Perfil"].map(
                 (item, index) => (
                   <li key={index}>
                     <Link
@@ -81,10 +81,10 @@ function Navbar() {
               >
                 <HiX onClick={handleClick} />
                 <ul>
-                  {["Juegos", "Consolas", "Acerca de", "Perfil"].map(
+                  {["Juegos", "Consolas", "Perfil"].map(
                     (item, i) => (
                       <li key={i} onClick={handleClick}>
-                        <Link className="link" to={`${item}`}>
+                        <Link className="link" to={`${item.split(' ')}`}>
                           {item}
                         </Link>
                       </li>

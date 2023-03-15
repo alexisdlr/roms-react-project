@@ -64,6 +64,56 @@ export const confirmAccount = async (req, res) => {
     return res.status(500).json("Hubo un error");
   }
 }
+export const forgotPass = async (req, res) => {
+  const { email } = req.body;
+
+  const existUser = await User.findOne({ email });
+
+  if (!existUser)
+    return res.status(403).json("el usuario no existe");
+
+  try {
+    existUser.token = generateToken();
+    await existUser.save();
+    emailPassword({
+      email,
+      name: existUser.name,
+      token: existUser.token,
+    });
+    return res.json("Hemos enviado un email con las instrucciones");
+  } catch (error) {
+    console.log(error);
+    return res.json(error);
+  }
+};
+
+export const checkToken = async (req, res) => {
+  const { token } = req.params;
+
+  const tokenValido = await User.findOne({ token });
+
+  if (!tokenValido) return res.status(400).json({ msg: "Token no válido" });
+
+  return res.json({ msg: "Token valido y el usuario si existe" });
+};
+
+export const newPass = async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+
+  const user = await User.findOne({ token });
+  if (!user) return res.status(400).json({ msg: "Token no válido" });
+
+  try {
+    user.token = null;
+    user.password = password;
+    await user.save();
+    return res.json({ msg: "Password modificado correctamente" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const logout = (req, res) => {
   res
     .clearCookie("accessToken", {

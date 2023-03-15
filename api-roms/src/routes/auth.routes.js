@@ -6,6 +6,9 @@ import {
   logout,
   profile,
   confirmAccount,
+  forgotPass,
+  checkToken,
+  newPass,
 } from "../controllers/auth.controller.js";
 import checkAuth from "../middlewares/auth.middleware.js";
 
@@ -33,6 +36,8 @@ router.post(
 );
 router.post("/logout", logout);
 router.get("/confirm/:token", confirmAccount)
+router.post("/olvide-password", forgotPass);
+router.route("/olvide-password/:token").get(checkToken).post(newPass);
 //private route
 router.get("/profile", checkAuth, profile);
 

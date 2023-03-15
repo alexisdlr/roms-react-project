@@ -1,5 +1,6 @@
 import { useState } from "react";
 import GameList from "../../components/gamelist/GameList";
+import SearchGame from "../../components/search/SearchGame";
 import useConsoles from "../../hooks/useConsoles";
 import "./Games.scss";
 
@@ -19,9 +20,7 @@ function Games() {
       </aside>
 
       <div className="container-games">
-        <div className="search">
-          <input type={"text"} placeholder={"Buscar juegos..."} />
-        </div>
+        <SearchGame />
         <GameList consoleId={console} />
       </div>
     </div>

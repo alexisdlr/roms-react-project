@@ -1,9 +1,12 @@
 import { createContext, useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import clientAxios from "../axios/clientAxios";
 
 export const GamesContext = createContext();
 
 export const GamesProvider = ({ children }) => {
+  const [searchParams, setSearchParams] = useSearchParams()
+
   const [favoritos, setFavoritos] = useState(
     JSON.parse(localStorage.getItem("favoritos")) || []
   );
@@ -36,7 +39,7 @@ export const GamesProvider = ({ children }) => {
   }
 
   return (
-    <GamesContext.Provider value={{ games, handleAgregarFavorito, handleQuitarFavorito, favoritos }}>
+    <GamesContext.Provider value={{ games, handleAgregarFavorito, handleQuitarFavorito, favoritos, setSearchParams, searchParams }}>
       {children}
     </GamesContext.Provider>
   );

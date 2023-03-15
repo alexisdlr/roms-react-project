@@ -13,6 +13,10 @@ const Games = lazy(() => import("../pages/games/Games"));
 const ConfirmAccount = lazy(() =>
   import("../pages/confirmAccount/ConfirmAccount")
 );
+const RecoverPassword = lazy(() =>
+  import("../pages/recoverPass/RecoverPassword")
+);
+const NewPassword = lazy(() => import('../pages/newPassword/NewPassword'))
 const Profile = lazy(() => import("../pages/profile/Profile"));
 
 const AnimatedRoutes = () => {
@@ -75,6 +79,22 @@ const AnimatedRoutes = () => {
           element={
             <Suspense fallback={<Loader />}>
               <ConfirmAccount />
+            </Suspense>
+          }
+        />
+        <Route
+          path="olvide-password"
+          element={
+            <Suspense fallback={<Loader />}>
+              <RecoverPassword />
+            </Suspense>
+          }
+        />
+         <Route
+          path="olvide-password/:token"
+          element={
+            <Suspense fallback={<Loader />}>
+              <NewPassword />
             </Suspense>
           }
         />
