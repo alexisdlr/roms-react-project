@@ -5,7 +5,6 @@ import authRoutes from './routes/auth.routes.js'
 import gamesRoutes from './routes/games.routes.js'
 import consolesRoutes from './routes/consoles.routes.js'
 import connectDB from './config/db.js'
-import cors from 'cors'
 const app = express();
 dotenv.config();
 
@@ -18,7 +17,7 @@ app.use((req, res, next) => {
 	res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
 	next();
 });
-// const dominios = [process.env.FRONTEND_URL];
+//const dominios = [process.env.FRONTEND_URL];
 // const corsOptions = {
 //   origin: function (origin, callback) {
 //     if(dominios.indexOf(origin) !== -1) {
