@@ -1,6 +1,8 @@
 import { validationResult } from "express-validator";
 import emailRegistro from '../helpers/emailRegistro.js'
+
 import generateJWT from "../helpers/generateJWT.js";
+import generateToken from "../helpers/generateToken.js";
 import User from "../models/User.js";
 export const register = async (req, res) => {
   //check if user exists
