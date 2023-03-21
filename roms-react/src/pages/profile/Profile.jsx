@@ -12,13 +12,14 @@ import { MdPlace } from "react-icons/md";
 import "./Profile.scss";
 import notfound from "../../assets/notfound.png";
 import useGames from "../../hooks/useGames";
+import { useCallback } from "react";
 function Perfil() {
   const { auth } = useAuth();
   const { favoritos, handleQuitarFavorito } = useGames();
 
-  const handleClick = (game) => {
+  const handleClick = useCallback((game) => {
     handleQuitarFavorito(game);
-  };
+  }, [handleQuitarFavorito])
 
   return (
     <motion.div

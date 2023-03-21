@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
@@ -11,16 +11,16 @@ function Navbar() {
   const { auth, logout } = useAuth();
   const [toggle, setToggle] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     setToggle(!toggle);
-  };
+  },[setToggle, toggle])
 
-  const handleLogout = (e) => {
+  const handleLogout = useCallback((e) => {
     e.preventDefault();
     logout();
     setToggle(!toggle);
     navigate("/login");
-  };
+  }, [navigate, logout, setToggle, toggle])
 
   return (
     <motion.div

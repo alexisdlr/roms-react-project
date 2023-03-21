@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -12,7 +12,7 @@ function ConfirmAccount() {
   const [loading, setLoading] = useState(true);
   const [cuentaConfirmada, setCuentaConfirmada] = useState(false);
 
-  const confirmar = async () => {
+  const confirmar = useCallback(async () => {
     try {
       const url = `auth/confirm/${token}`;
       const { data } = await clientAxios.get(url);
@@ -28,7 +28,7 @@ function ConfirmAccount() {
       });
     }
     setLoading(false);
-  };
+  },[setLoading, setAlerta, setCuentaConfirmada, token])
 
   useEffect(() => {
     confirmar();

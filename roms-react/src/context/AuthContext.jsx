@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import clientAxios from "../axios/clientAxios";
 
 export const AuthContext = createContext();
@@ -34,14 +34,14 @@ export const AuthContextProvider = ({ children }) => {
     authUser();
   }, []);
 
-  const logout = async () => {
+  const logout = useCallback(async () => {
     try {
       localStorage.removeItem("tokenRoms");
       setAuth({});
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [setAuth])
 
   return (
     <AuthContext.Provider value={{ auth, setAuth, logout, cargando }}>
