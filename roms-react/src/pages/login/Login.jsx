@@ -1,19 +1,18 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { AnimatePresence, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import { useGoogleLogin } from "@react-oauth/google";
-import Alert from "../../components/alert/Alert";
 import clientAxios from "../../axios/clientAxios";
 import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { BiLogIn } from "react-icons/bi";
 import "./Login.scss";
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
   const { setAuth } = useAuth();
-  const [err, setErr] = useState({});
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -37,35 +36,18 @@ function Login() {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = useCallback(async (e) => {
     e.preventDefault();
-
-    if ([inputs.password, inputs.email].includes("")) {
-      setErr({
-        msg: "Ningun campo puede estar vacio.",
-        error: true,
-      });
-      setTimeout(() => {
-        setErr({});
-      }, 3000);
-      return;
-    }
     try {
       const { data } = await clientAxios.post("auth/login", inputs);
       localStorage.setItem("tokenRoms", data.token);
       setAuth(data);
       navigate("/");
     } catch (error) {
-      setErr({
-        msg: error.response.data,
-        error: true,
-      });
-      setTimeout(() => {
-        setErr({});
-      }, 3000);
+      toast.error(error.response.data)
     }
-  };
-  const { msg } = err;
+  }, [inputs, toast, clientAxios])
+
   return (
     <div className="login">
       <motion.div
@@ -81,7 +63,6 @@ function Login() {
           </Link>
         </div>
         <div className="right">
-          <AnimatePresence>{msg && <Alert err={err} />}</AnimatePresence>
           <motion.h2 layout>
             Inicia Sesión <BiLogIn />{" "}
           </motion.h2>
