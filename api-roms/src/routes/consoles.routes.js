@@ -1,11 +1,11 @@
-import { Router } from "express"
-import { addConsoles, deleteConsole, getConsoles} from "../controllers/consoles.controller.js"
+// import { Router } from "express"
+// import { addConsoles, deleteConsole, getConsoles} from "../controllers/consoles.controller.js"
 
-const router = Router()
+// const router = Router()
 
-router.get('/', getConsoles)
-router.post('/', addConsoles)
+// router.get('/', getConsoles)
+// router.post('/', addConsoles)
 
-router.delete('/:id', deleteConsole)
+// router.delete('/:id', deleteConsole)
 
-export default router
+// export default router

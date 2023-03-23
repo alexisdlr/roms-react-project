@@ -1,18 +1,12 @@
-import mongoose from "mongoose";
+import { createPool } from "mysql2/promise";
 
-const connectDB = async () => {
-  try {
-    mongoose.set('strictQuery', false)
-    const db = await mongoose.connect(process.env.MONGO_URI,{
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    })
-    const url = `${db.connection.host}:${db.connection.port}`
-    console.log('mongo db conected on:' , url)
-  } catch (error) {
-    console.log(`error: ${error}`)
-    process.exit(1)
-  }
-}
+import { HOST, USER, PASS, DB_PORT, DATABASE } from './config.js'
 
-export default connectDB
+export const pool = createPool({
+  host: HOST,
+  user: USER,
+  password: PASS,
+  port: DB_PORT,
+  database: DATABASE
+})
+
