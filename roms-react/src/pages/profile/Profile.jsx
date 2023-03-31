@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import useAuth from "../../hooks/useAuth";
-import defaultPic from "../../assets/userPicDefault.png";
+import defaultPic from "../../assets/userPicDefault.webp";
 import {
   AiFillFacebook,
   AiFillHeart,
@@ -10,7 +10,7 @@ import {
 } from "react-icons/ai";
 import { MdPlace } from "react-icons/md";
 import "./Profile.scss";
-import notfound from "../../assets/notfound.png";
+import notfound from "../../assets/notfound.webp";
 import useGames from "../../hooks/useGames";
 import { useCallback } from "react";
 function Perfil() {

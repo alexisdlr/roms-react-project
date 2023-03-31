@@ -1,7 +1,7 @@
 @import "../../mixins.scss";
 
 .Home {
-  background: url("../../assets/bg.jpg") no-repeat
+  background: url("../../assets/bg.webp") no-repeat
     center center/cover;
   height: 100vh;
   padding: 5rem 3rem;
@@ -67,7 +67,8 @@
     -webkit-text-fill-color: transparent;
   }
   p {
-    color: var(--white-color);
+    color: lightgray;
+    line-height: 2;
     margin-top: 12px;
     @include mobile {
       font-size: 14px;

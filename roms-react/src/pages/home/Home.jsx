@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { BiGame } from "react-icons/bi";
-import freeroms from "../../assets/freeroms.jpg";
+import freeroms from "../../assets/freeroms.webp";
 import GameList from "../../components/gamelist/GameList";
 import "./Home.scss";
 

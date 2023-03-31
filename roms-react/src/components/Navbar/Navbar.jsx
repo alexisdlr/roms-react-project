@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
-import defaultPic from "../../assets/userPicDefault.png";
+import defaultPic from "../../assets/userPicDefault.webp";
 import useAuth from "../../hooks/useAuth";
 import "./Navbar.scss";
 function Navbar() {
@@ -13,14 +13,17 @@ function Navbar() {
 
   const handleClick = useCallback(() => {
     setToggle(!toggle);
-  },[setToggle, toggle])
+  }, [setToggle, toggle]);
 
-  const handleLogout = useCallback((e) => {
-    e.preventDefault();
-    logout();
-    setToggle(!toggle);
-    navigate("/login");
-  }, [navigate, logout, setToggle, toggle])
+  const handleLogout = useCallback(
+    (e) => {
+      e.preventDefault();
+      logout();
+      setToggle(!toggle);
+      navigate("/login");
+    },
+    [navigate, logout, setToggle, toggle]
+  );
 
   return (
     <motion.div
@@ -37,11 +40,11 @@ function Navbar() {
         <div className="navigation">
           <nav>
             <ul>
-              {["Juegos", "Consolas", "Perfil"].map(
+              {["Juegos", "Consolas", "Perfil", "Acerca de"].map(
                 (item, index) => (
                   <li key={index}>
                     <Link
-                      to={item.toLowerCase()}
+                      to={item.toLowerCase().split(' ')[0]}
                       style={{ textDecoration: "none", color: "inherit" }}
                     >
                       <span>{item}</span>
@@ -81,10 +84,10 @@ function Navbar() {
               >
                 <HiX onClick={handleClick} />
                 <ul>
-                  {["Juegos", "Consolas", "Perfil"].map(
+                  {["Juegos", "Consolas", "Perfil", "Acerca de"].map(
                     (item, i) => (
                       <li key={i} onClick={handleClick}>
-                        <Link className="link" to={`${item.split(' ')}`}>
+                        <Link className="link" to={`${item.split(" ")}`}>
                           {item}
                         </Link>
                       </li>

@@ -6,6 +6,7 @@ import ProtectedRoutes from "../layouts/ProtectedRoutes";
 import Loader from "./Loader/Loader";
 import { AnimatePresence } from "framer-motion";
 
+const About = lazy(() => import("../pages/about/About"));
 const Home = lazy(() => import("../pages/home/Home"));
 const Login = lazy(() => import("../pages/login/Login"));
 const Register = lazy(() => import("../pages/register/Register"));
@@ -62,6 +63,14 @@ const AnimatedRoutes = () => {
             element={
               <Suspense fallback={<Loader />}>
                 <Games />
+              </Suspense>
+            }
+          />
+           <Route
+            path="acerca"
+            element={
+              <Suspense fallback={<Loader />}>
+                <About />
               </Suspense>
             }
           />

@@ -1,0 +1,36 @@
+@import "../../mixins.scss";
+
+.about {
+  padding:4rem;
+
+  h2 {
+    font-size: 3rem;
+    background: -webkit-linear-gradient(var(--text-primary-color), #2050c9);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .about-text {
+    margin: 2rem 0;
+    text-align: center;
+
+    p {
+      margin-top: 1rem;
+      line-height: 2;
+      color: lightgray;
+    }
+    
+  }
+  .contributors-section {
+    h2 {
+      text-align: center;
+    }
+    .contributors {
+      margin: 2rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+}
