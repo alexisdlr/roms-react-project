@@ -1,3 +1,4 @@
+import { AiOutlineSearch } from "react-icons/ai";
 import useGames from "../../hooks/useGames";
 import "./SearchGame.scss";
 const SearchGame = () => {
@@ -9,11 +10,18 @@ const SearchGame = () => {
 
   return (
     <div className="search-game">
-      <input
-        type={"text"}
-        onChange={handleSearch}
-        placeholder={"Buscar juegos..."}
-      />
+      <label htmlFor="search">
+        <input
+        id="seach"
+          type={"text"}
+          onChange={handleSearch}
+          placeholder={"Buscar juegos..."}
+        />
+        <span>
+          <AiOutlineSearch size={22} />
+        </span>
+       
+      </label>
     </div>
   );
 };

@@ -40,7 +40,7 @@
         font-weight: 600;
         line-height: 1.6;
         @include mobile {
-          font-size: 1rem;
+          font-size: 14px;
           max-width: 100%;
           padding: 1rem;
         }
@@ -65,13 +65,16 @@
     background: -webkit-linear-gradient(var(--text-primary-color), #2050c9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    @include mobile {
+      font-size: 2rem;
+    }
   }
   p {
     color: lightgray;
     line-height: 2;
     margin-top: 12px;
     @include mobile {
-      font-size: 14px;
+      font-size: 13px;
       text-align: center;
     }
   }

@@ -87,7 +87,7 @@ function Navbar() {
                   {["Juegos", "Consolas", "Perfil", "Acerca de"].map(
                     (item, i) => (
                       <li key={i} onClick={handleClick}>
-                        <Link className="link" to={`${item.split(" ")}`}>
+                        <Link className="link" to={item.toLowerCase().split(' ')[0]}>
                           {item}
                         </Link>
                       </li>

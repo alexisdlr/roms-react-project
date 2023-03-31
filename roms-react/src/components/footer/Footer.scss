@@ -11,4 +11,26 @@
     align-items: center;
     gap: 5px;
   }
+  .consoles{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    .console-button {
+      background-color: var(--text-primary-color);
+      padding: .3rem 1rem;
+      outline: 0;
+      border: 0;
+      color: var(--white-color);
+      border-radius: 8px;
+      font-weight: 600;
+      opacity: .5;
+      transition: all 300ms ease-in-out;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }
