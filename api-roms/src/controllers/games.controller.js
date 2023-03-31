@@ -2,15 +2,16 @@ import { pool } from "../config/db.js";
 
 export const getGames = async (req, res) => {
   const pageNumber = req.query.pageNumber || 1;
-  const pageSize = req.query.pageSize || 100;
+  const pageSize = req.query.pageSize || 10;
 
   const offset = (pageNumber - 1) * pageSize;
-  const limit = pageSize;
+  const limit = parseInt(pageSize);
 
   try {
-    const sql = "SELECT * FROM GAMES LIMIT ?, ?";
-    const [rows] = await pool.query(sql, [offset, limit]);
-    return res.status(200).json({ games: rows, pageNumber, pageSize, totalRows: rows.length});
+    const sql = `SELECT * FROM GAMES LIMIT ?,?`
+    const [rows] = await pool.query(sql, [offset, limit])
+    return res.status(200).json({ games: rows, pageNumber, pageSize, totalRows: rows.length})
+
   } catch (error) {
     console.log(error);
     return res.status(405).json(error);

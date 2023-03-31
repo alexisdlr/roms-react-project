@@ -4,4 +4,23 @@
  gap: 2rem;
  flex-wrap: wrap; 
  padding: 3rem 0;
+ 
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  div {
+    button {
+      padding: .3rem 1rem;
+      background: var(--text-primary-color);
+      color: var(--white-color);
+      border: none;
+      outline: none;
+      border-radius: 5px;
+    }
+  }
 }

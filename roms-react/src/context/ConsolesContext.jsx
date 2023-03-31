@@ -6,19 +6,19 @@ export const ConsolesContext = createContext();
 export const ConsolesProvider = ({ children }) => {
     const [consoles, setConsoles] = useState([]);
 
-useEffect(() => {
-  const getConsoles = async () => {
+// useEffect(() => {
+//   const getConsoles = async () => {
     
-    try {
-      const {data} = await clientAxios('/consoles')
-      setConsoles(data);
-    } catch (error) {
-      console.log(error.response.data.msg)
-      setConsoles([])
-    }
-  }
-  getConsoles()
-  }, []);
+//     try {
+//       const {data} = await clientAxios('/consoles')
+//       setConsoles(data);
+//     } catch (error) {
+//       console.log(error.response.data.msg)
+//       setConsoles([])
+//     }
+//   }
+//   getConsoles()
+//   }, []);
 
 
 

@@ -7,11 +7,10 @@ import useAuth from "../hooks/useAuth";
 function ProtectedRoutes() {
   const { auth, cargando } = useAuth()
 
-  if (cargando) return <Loader />
   return (
     <>
       <Navbar />
-      {auth?._id || auth?.sub ? <Outlet /> : <Navigate to="/login" /> }
+       <Outlet />
       <Footer />
     </>
   );

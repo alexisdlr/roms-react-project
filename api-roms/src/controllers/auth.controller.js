@@ -1,5 +1,5 @@
 import { validationResult } from "express-validator";
-import emailRegistro from '../helpers/emailRegistro.js'
+import { pool } from "../config/db.js";
 
 import generateJWT from "../helpers/generateJWT.js";
 import generateToken from "../helpers/generateToken.js";
@@ -10,15 +10,12 @@ export const register = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json(errors.array());
   }
-
   try {
-    const { email, name, token } = req.body;
-
-    //register on bd
-   // const user = new User(req.body);
+   const {username, name, email, password} = req.body;
+   const q = 'INSERT INTO users ( username, email, pass, name) values (?, ?, ?, ?)'
+   const [rows] = await pool.query(q, [username, email, password, name])
   //  const userSaved = await user.save();
-    emailRegistro({ email, name: name, token: token });
-   // return res.json(userSaved);
+    return res.json(rows);
   } catch (error) {
     return res.status(400).json(error);
   }

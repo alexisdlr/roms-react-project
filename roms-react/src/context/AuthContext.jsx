@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
         const { data } = await clientAxios("/auth/profile", config);
         setAuth(data);
       } catch (error) {
-        setAuth({});
+        setAuth({id: 1});
       }
 
       setCargando(false);

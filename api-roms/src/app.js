@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import indexRouter from './routes/index.routes.js'
 import authRoutes from './routes/auth.routes.js'
 import gamesRoutes from './routes/games.routes.js'
+import priceRoutes from './routes/prices.router.js'
+
 // import consolesRoutes from './routes/consoles.routes.js'
 const app = express();
 dotenv.config();
@@ -32,6 +34,7 @@ app.use(express.json());
 app.use('/', indexRouter)
 app.use('/api/auth', authRoutes)
 app.use('/api/games', gamesRoutes)
+app.use('/api/price', priceRoutes)
 // app.use('/api/consoles', consolesRoutes)
 
 

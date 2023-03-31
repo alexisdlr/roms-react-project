@@ -1,7 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import SingleConsoleGame from "../pages/singleconsolegame/SingleConsoleGames";
-import ConsolesPage from "../pages/consoles/ConsolesPage";
 import ProtectedRoutes from "../layouts/ProtectedRoutes";
 import Loader from "./Loader/Loader";
 import { AnimatePresence } from "framer-motion";
@@ -17,7 +15,6 @@ const RecoverPassword = lazy(() =>
   import("../pages/recoverPass/RecoverPassword")
 );
 const NewPassword = lazy(() => import('../pages/newPassword/NewPassword'))
-const Profile = lazy(() => import("../pages/profile/Profile"));
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -33,30 +30,7 @@ const AnimatedRoutes = () => {
               </Suspense>
             }
           />
-          <Route
-            path="perfil"
-            element={
-              <Suspense fallback={<Loader />}>
-                <Profile />
-              </Suspense>
-            }
-          />
-          <Route
-            path="juegos/:id"
-            element={
-              <Suspense fallback={<Loader />}>
-                <SingleConsoleGame />
-              </Suspense>
-            }
-          />
-          <Route
-            path="consolas"
-            element={
-              <Suspense fallback={<Loader />}>
-                <ConsolesPage />
-              </Suspense>
-            }
-          />
+          
           <Route
             path="juegos"
             element={
